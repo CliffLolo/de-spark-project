@@ -62,15 +62,19 @@ export SPARK_HOME=/path/to/spark/spark-3.1.3-bin-hadoop3.2
 - Save and close the zeppellin-site.xml file.
 
 ### Starting Spark
-Run the following command to start Spark:
+Open the terminal and navigate to the Spark directory.
+
+- Run the following command to start Spark:
 ```bash
-sbin/start-all.sh 
+./sbin/start-all.sh 
 ```
 
 ### Starting Zeppelin
-Run the following command to start Zeppelin:
+Open the terminal and navigate to the Zeppelin directory.
+
+- Run the following command to start Zeppelin:
 ```bash
-bin/zeppelin-daemon.sh start
+./bin/zeppelin-daemon.sh start
 ```
 
 Open your web browser and go to ```http://localhost:8085``` to access the Zeppelin web interface.
