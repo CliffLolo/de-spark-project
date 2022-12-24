@@ -81,5 +81,16 @@ Open your web browser and go to ```http://localhost:8085``` to access the Zeppel
 
 That's it! You should now have Apache Spark 3.1.3 and Apache Zeppelin installed and running on your Mac
 
+## Airflow
+You'll need to create a connection to the Zeppelin server in the Airflow UI using the zeppelin_conn connection ID.
+You can do this by going to the Admin > Connections page in the Airflow UI and adding a new connection with the following details:
+* Conn Id: zeppelin_conn
+* Conn Type: HTTP
+* Host: http://localhost:8085
+
+You'll also need to make sure that the Airflow webserver has access to the Zeppelin server.
+You can do this by adding the IP address of the Airflow webserver to the zeppelin.server.allowed.origins property in the Zeppelin configuration.
+Once you've set up the connection and the DAG, you can trigger the DAG using the Airflow UI or the airflow command-line tool.
+
 ## Author
 Cllifford Frempong
