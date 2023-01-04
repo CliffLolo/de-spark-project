@@ -36,12 +36,12 @@ export PATH=$SPARK_HOME/bin:$PATH
 tar xvf zeppelin-0.10.1-bin-all.tgz
 ```
 
-7. Set the ZEPPELIN_HOME environment variable to the extracted Zeppelin directory by adding the following line to your .bashrc or .bash_profile file:
+7. Set the ZEPPELIN_HOME environment variable to the extracted Zeppelin directory by adding the following line to your .bash_profile file:
 ```bash
 export ZEPPELIN_HOME=/path/to/zeppelin-0.10.1-bin-all
 ```
 
-8. Add the Zeppelin bin directory to your PATH by adding the following line to your .bashrc or .bash_profile file:
+8. Add the Zeppelin bin directory to your PATH by adding the following line to your .bash_profile file:
 ```bash
 export PATH=$ZEPPELIN_HOME/bin:$PATH
 ```
@@ -50,7 +50,7 @@ export PATH=$ZEPPELIN_HOME/bin:$PATH
 - Navigate to the conf directory in the extracted zeppelin directory at path/to/zeppelin/zeppelin-0.6.2-bin-all/conf
 - copy this file to a new name called zeppelin-env.sh using the following commands:
 ```
-cd Downloads/zeppelin-0.6.2-bin-all/conf
+cd /path/to/zeppelin-0.6.2-bin-all/conf
 cp zeppelin-env.sh.template zeppelin-env.sh
 ```
 - Edit the zeppelin-env.sh file by adding this line to the very top of the file.
@@ -58,7 +58,7 @@ cp zeppelin-env.sh.template zeppelin-env.sh
 export SPARK_HOME=/path/to/spark/spark-3.1.3-bin-hadoop3.2
 ```
 - Save and close the zeppelin-env.sh file.
-- Edit the zeppellin-site.xml file by setting the value of zeppelin.server.port to ```8085```.
+- Edit the zeppellin-site.xml file by setting the value of ```zeppelin.server.port``` to ```8085```.
 - Save and close the zeppellin-site.xml file.
 
 ### Starting Spark
