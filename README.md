@@ -92,5 +92,37 @@ You'll also need to make sure that the Airflow webserver has access to the Zeppe
 You can do this by adding the IP address of the Airflow webserver to the zeppelin.server.allowed.origins property in the Zeppelin configuration.
 Once you've set up the connection and the DAG, you can trigger the DAG using the Airflow UI or the airflow command-line tool.
 
+## Kafka
+
+* Start the ZooKeeper service
+
+    ```bin/zookeeper-server-start.sh config/zookeeper.properties```
+
+* Start the Kafka broker service
+
+    ```bin/kafka-server-start.sh config/server.properties```
+
+* Create topics
+
+    ```bin/kafka-topics.sh --create --topic <topic name> --bootstrap-server localhost:9092```
+* list the Kafka topics
+
+    ```./bin/kafka-topics.sh --bootstrap-server=localhost:9092 --list```
+
+* write something into the topic
+
+    ```bin/kafka-console-producer.sh --topic <topic name> --bootstrap-server localhost:9092```
+
+* read the event
+
+    ```bin/kafka-console-consumer.sh --topic <topic name> --from-beginning --bootstrap-server localhost:9092```
+
+* delete any data of your local Kafka environment including any events you have created along the way, run the command
+
+    ```rm -rf /tmp/kafka-logs /tmp/zookeeper```
+* Delete a Kafka Topic
+
+  ```./bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic <topic name>```
+
 ## Author
 Cllifford Frempong
