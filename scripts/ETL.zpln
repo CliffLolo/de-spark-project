@@ -1,0 +1,524 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%spark.pyspark\nfrom pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType\n\n#Define the schema for the catalog_page data\ncatalog_page__schema = StructType([\n  StructField(\"cp_catalog_page_sk\", IntegerType(), True), \n  StructField(\"cp_catalog_page_id\", StringType(), True),\n  StructField(\"cp_start_date_sk\", IntegerType(), True),\n  StructField(\"cp_end_date_sk\", IntegerType(), True),\n  StructField(\"cp_department\", StringType(), True),\n  StructField(\"cp_catalog_number\", IntegerType(), True),\n  StructField(\"cp_catalog_page_number\", IntegerType(), True),\n  StructField(\"cp_description\", StringType(), True),\n  StructField(\"cp_type\", StringType(), True)\n])\n\n#Define the schema for the customer data\ncustomer__schema = StructType([\n  StructField(\"c_customer_sk\", IntegerType(), True),\n  StructField(\"c_customer_id\", StringType(), True),\n  StructField(\"c_current_cdemo_sk\", IntegerType(), True),\n  StructField(\"c_current_hdemo_sk\", IntegerType(), True),\n  StructField(\"c_current_addr_sk\", IntegerType(), True),\n  StructField(\"c_first_shipto_date_sk\", IntegerType(), True),\n  StructField(\"c_first_sales_date_sk\",  IntegerType(), True),\n  StructField(\"c_salutation\", StringType(), True),\n  StructField(\"c_first_name\",  StringType(), True),\n  StructField(\"c_last_name\", StringType(), True),\n  StructField(\"c_preferred_cust_flag\",  StringType(), True),\n  StructField(\"c_birth_day\",  IntegerType(), True),\n  StructField(\"c_birth_month\", IntegerType(), True),\n  StructField(\"c_birth_year\", IntegerType(), True),\n  StructField(\"c_birth_country\",  StringType(), True),\n  StructField(\"c_login\", StringType(), True),\n  StructField(\"c_email_address\",  StringType(), True),\n  StructField(\"c_last_review_date\", StringType(), True)\n])\n\n#Define the schema for the customer address data\ncustomer_address__schema = StructType([\n  StructField(\"ca_address_sk\",IntegerType(), True),\n  StructField(\"ca_address_id\",  StringType(), True),\n  StructField(\"ca_street_number\", StringType(), True),\n  StructField(\"ca_street_name\", StringType(), True),\n  StructField(\"ca_street_type\", StringType(), True),\n  StructField(\"ca_suite_number\", StringType(), True),\n  StructField(\"ca_city\", StringType(), True),\n  StructField(\"ca_county\", StringType(), True),\n  StructField(\"ca_state\", StringType(), True),\n  StructField(\"ca_zip\", StringType(), True),\n  StructField(\"ca_country\", StringType(), True),\n  StructField(\"ca_gmt_offset\", DoubleType(), True),\n  StructField(\"ca_location_type\",  StringType(), True)\n])\n\n#Define the schema for the customer demographics data\ncustomer_demographics__schema = StructType([\n  StructField(\"cd_demo_sk\",IntegerType(), True), \n  StructField(\"cd_gender\", StringType(), True),\n  StructField(\"cd_marital_status\", StringType(), True),\n  StructField(\"cd_education_status\",  StringType(), True),\n  StructField(\"cd_purchase_estimate\", IntegerType(), True), \n  StructField(\"cd_credit_rating\",  StringType(), True),\n  StructField(\"cd_dep_count\",IntegerType(), True), \n  StructField(\"cd_dep_employed_count\", IntegerType(), True), \n  StructField(\"cd_dep_college_count\", IntegerType(), True), \n])\n\n\n# Read the catalog_page.dat file into a DataFrame\ncatalog_page_df = spark.read.csv('/Users/cliffordfrempong/Downloads/BS_data/catalog_page.dat', header=False, schema=catalog_page__schema, sep='|')\n\n# Read the customer.dat file into a DataFrame\ncustomer_df = spark.read.csv('/Users/cliffordfrempong/Downloads/BS_data/customer.dat', header=False, schema=customer__schema, sep='|')\n\n# Read the customer_address.dat file into a DataFrame\ncustomer_address_df = spark.read.csv('/Users/cliffordfrempong/Downloads/BS_data/customer_address.dat', header=False, schema=customer_address__schema, sep='|')\n\n# Read the customer_demographics.dat file into a DataFrame\ncustomer_demographics_df = spark.read.csv('/Users/cliffordfrempong/Downloads/BS_data/customer_demographics.dat', header=False, schema=customer_demographics__schema, sep='|')",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-09T15:31:03+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671785454871_2132413565",
+      "id": "paragraph_1671785454871_2132413565",
+      "dateCreated": "2022-12-23T08:50:54+0000",
+      "dateStarted": "2023-01-09T15:29:58+0000",
+      "dateFinished": "2023-01-09T15:30:07+0000",
+      "status": "ERROR",
+      "focus": true,
+      "$$hashKey": "object:186",
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/var/folders/v2/ty8j4vgx3ng13579sy7tltmh0000gn/T/python9812048789303144611/zeppelin_python.py\", line 152, in <module>\n    code = compile('\\n'.join(stmts), '<stdin>', 'exec', ast.PyCF_ONLY_AST, 1)\n  File \"<stdin>\", line 31\n    StructField(\"c_birth_month\", IntegerType(), True),\n    ^\nSyntaxError: invalid syntax\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark.pyspark\n\ncatalog_page_df.show(5)\ncustomer_df.show(5)\ncustomer_address_df.show(5)\ncustomer_demographics_df.show(5)",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-01T10:50:49+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=240",
+              "$$hashKey": "object:462"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=241",
+              "$$hashKey": "object:463"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=242",
+              "$$hashKey": "object:464"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=243",
+              "$$hashKey": "object:465"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671787139634_1551400280",
+      "id": "paragraph_1671787139634_1551400280",
+      "dateCreated": "2022-12-23T09:18:59+0000",
+      "dateStarted": "2023-01-01T15:10:41+0000",
+      "dateFinished": "2023-01-01T15:10:41+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:187"
+    },
+    {
+      "text": "%spark.pyspark\ncustomer_demographics_df.columns",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-01T10:50:50+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671787931383_633007744",
+      "id": "paragraph_1671787931383_633007744",
+      "dateCreated": "2022-12-23T09:32:11+0000",
+      "dateStarted": "2023-01-01T15:10:41+0000",
+      "dateFinished": "2023-01-01T15:10:41+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:188"
+    },
+    {
+      "text": "%spark.pyspark\ncustomer_df.select(\"c_birth_country\").distinct().show(customer_df.count())\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-01T10:50:50+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=244",
+              "$$hashKey": "object:563"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=245",
+              "$$hashKey": "object:564"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=246",
+              "$$hashKey": "object:565"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=247",
+              "$$hashKey": "object:566"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=248",
+              "$$hashKey": "object:567"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=249",
+              "$$hashKey": "object:568"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671790845756_1635299807",
+      "id": "paragraph_1671790845756_1635299807",
+      "dateCreated": "2022-12-23T10:20:45+0000",
+      "dateStarted": "2023-01-01T15:10:41+0000",
+      "dateFinished": "2023-01-01T15:10:42+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:189"
+    },
+    {
+      "text": "%spark.pyspark\nfrom pyspark.sql.functions import *\nimport matplotlib.pyplot as plt\n\n\n\ncustomer_df_by_country = customer_df.groupBy(\"c_birth_country\").count()\ncustomer_df_by_country.show(5)\n\n# Group the data by country and count the number of people in each group\ncustomer_df_selected = customer_df_by_country.limit(5).select([\"c_birth_country\",\"count\"])\n\n# Convert the dataframe to a Pandas dataframe\ncustomer_df_pandas = customer_df_selected.toPandas()\n\n# Plot the data\ncustomer_df_pandas.plot.bar(x='c_birth_country', y='count', rot=0)\nplt.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-01T10:50:52+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {}
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=250",
+              "$$hashKey": "object:634"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=251",
+              "$$hashKey": "object:635"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=252",
+              "$$hashKey": "object:636"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=253",
+              "$$hashKey": "object:637"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=254",
+              "$$hashKey": "object:638"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=255",
+              "$$hashKey": "object:639"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=256",
+              "$$hashKey": "object:640"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671788034985_1813488697",
+      "id": "paragraph_1671788034985_1813488697",
+      "dateCreated": "2022-12-23T09:33:54+0000",
+      "dateStarted": "2023-01-01T15:10:42+0000",
+      "dateFinished": "2023-01-01T15:10:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:190"
+    },
+    {
+      "text": "%spark.pyspark\nfrom pyspark.sql.functions import *\ngender_counts = customer_demographics_df.groupBy(\"cd_gender\").count()\n\ngender_counts.show()\n\ngender_counts_pandas = gender_counts.toPandas()\ngender_counts_pandas.plot.pie(y='count', labels=['Female', 'Male'])\nplt.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-01T10:50:53+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=257",
+              "$$hashKey": "object:710"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=258",
+              "$$hashKey": "object:711"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=259",
+              "$$hashKey": "object:712"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=260",
+              "$$hashKey": "object:713"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=261",
+              "$$hashKey": "object:714"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=262",
+              "$$hashKey": "object:715"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671791440079_793132159",
+      "id": "paragraph_1671791440079_793132159",
+      "dateCreated": "2022-12-23T10:30:40+0000",
+      "dateStarted": "2023-01-01T15:10:43+0000",
+      "dateFinished": "2023-01-01T15:10:44+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:191"
+    },
+    {
+      "text": "%spark.pyspark\n# Calculate the number of people per country using the `count` function\npeople_per_country = customer_df.groupBy(\"c_birth_country\").count()\n\n# Rename the count column to Number of People\npeople_per_country = people_per_country.withColumnRenamed(\"count\", \"NumberofPeople\")\n\n# Show the resulting DataFrame\npeople_per_country.limit(5).show()\n\npeople_per_country_pd = people_per_country.limit(5).toPandas()\n\npeople_per_country_pd.plot.bar(x='c_birth_country', y='NumberofPeople')\nplt.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-01T10:50:54+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=263",
+              "$$hashKey": "object:781"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=264",
+              "$$hashKey": "object:782"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=265",
+              "$$hashKey": "object:783"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=266",
+              "$$hashKey": "object:784"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=267",
+              "$$hashKey": "object:785"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671761044251_1411655682",
+      "id": "paragraph_1671761044251_1411655682",
+      "dateCreated": "2022-12-23T02:04:04+0000",
+      "dateStarted": "2023-01-01T15:10:44+0000",
+      "dateFinished": "2023-01-01T15:10:44+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:192"
+    },
+    {
+      "text": "%spark.pyspark\n\ndf_to_db = [catalog_page_df, customer_df, customer_address_df, customer_demographics_df]\ntable_names =  ['catalog_page', 'customer', 'customer_address', 'customer_demographics']\n\n\ndef write_to_postgres(df_to_db, table_names):\n    from pyspark.sql import SparkSession\n\n    # Create a SparkSession\n    spark = SparkSession.builder.getOrCreate()\n\n    # Set the JDBC connection properties\n    jdbc_url = \"jdbc:postgresql://localhost:5432/bigspark\"\n\n    # Write each DataFrame to the PostgreSQL database\n    for df, table in zip(df_to_db, table_names):\n        df.write.jdbc(jdbc_url, table, mode=\"overwrite\")\n\nwrite_to_postgres(df_to_db,table_names)\n\nprint(\"Insertion into database complete!\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-01-01T10:51:11+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=268",
+              "$$hashKey": "object:847"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=269",
+              "$$hashKey": "object:848"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=270",
+              "$$hashKey": "object:849"
+            },
+            {
+              "jobUrl": "http://192.168.100.4:4041/jobs/job?id=271",
+              "$$hashKey": "object:850"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1671796713775_1273474334",
+      "id": "paragraph_1671796713775_1273474334",
+      "dateCreated": "2022-12-23T11:58:33+0000",
+      "dateStarted": "2023-01-01T15:10:45+0000",
+      "dateFinished": "2023-01-01T15:10:51+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:193"
+    }
+  ],
+  "name": "ETL",
+  "id": "2HQG8HZ5X",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "inIsolatedMode": false,
+    "startTime": "2023-01-01_15-10-40"
+  },
+  "path": "/ETL"
+}
